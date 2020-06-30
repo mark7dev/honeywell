@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const Form = () => {
 
@@ -51,6 +52,7 @@ const Form = () => {
         ) {
             setError(true);
         } else {
+            info.id = uuidv4();
             console.log(info);
             setInfo({
                 name: '',
