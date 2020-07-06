@@ -1,5 +1,6 @@
 import {
-    ADD_STUDENT
+    ADD_STUDENT,
+    GET_STUDENTS
 } from '../types';
 
 const initialState = {
@@ -12,6 +13,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 students: [...state.students, action.payload]
+            }
+        case GET_STUDENTS:
+            return {
+                ...state,
+                students: action.payload
             }
         default:
             return state;

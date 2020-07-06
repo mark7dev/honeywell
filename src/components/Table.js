@@ -1,42 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getStudentsAction } from '../actions/studentsActions';
+import StudentRow from './StudentRow';
 
 const Table = () => {
 
-    const students = [
-        {   
-            id: 1,
-            name: 'Peter',
-            last: 'McGill',
-            street: '5th Avenue',
-            city: 'New York',
-            phone: '123456',
-            gpa: 'A+'
-        },
-        {
-            id: 2,
-            name: 'James',
-            last: 'Taylor',
-            street: 'Tree Avenue',
-            city: 'San Diego',
-            phone: '789654',
-            gpa: 'C'
-        },
-        {
-            id: 3,
-            name: 'Zach',
-            last: 'Thomas',
-            street: 'Red Field',
-            city: 'Los Angeles',
-            phone: '258741',
-            gpa: 'B-'
-        }
-    ];
+    const dispatch = useDispatch();
 
-    const deleteStudent = id => {
-        console.log(id);
-        
-    }
+    useEffect(() => {
+        const getStudents = () => dispatch( getStudentsAction() );
+        getStudents();
+    }, [])
+
+    const students = useSelector( state => state.students.students );
 
     return ( 
         <>
@@ -54,20 +30,12 @@ const Table = () => {
                     </tr>
                 </thead>
                 <tbody>
-                        { students.map(student => (
-                            <tr 
-                                key={student.id}
-                            >
-                                <td>{student.name}</td>
-                                <td>{student.last}</td>
-                                <td>{student.street}</td>
-                                <td>{student.city}</td>
-                                <td>{student.phone}</td>
-                                <td>{student.gpa}</td>
-                                <td><Link to={`/student/${student.id}`}>See details</Link></td>
-                                <td><button onClick={() => deleteStudent(student.id)}>X</button></td>
-                            </tr>
-                        ))}
+                    { students.map(student => (
+                        <StudentRow 
+                            key={student.id}
+                            student={student}
+                        />
+                    ))}
                 </tbody>
             </table>
         </>

@@ -44,6 +44,15 @@
       "phone": "587964",
       "gpa": "E/F",
       "id": 5
+    },
+    {
+      "name": "Henry",
+      "last": "Martin",
+      "street": "Blue Forest",
+      "city": "Carson",
+      "phone": "756351",
+      "gpa": "A+",
+      "id": 6
     }
   ]
 }
