@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from 'react-redux';
+import { addStudentAction } from '../actions/studentsActions';
 
-const Form = () => {
+const Form = ({history}) => {
 
-    const [info, setInfo] = useState({
+    const [student, setStudent] = useState({
         name: '',
         last: '',
         street: '',
@@ -14,7 +15,11 @@ const Form = () => {
 
     const [error, setError] = useState(false);
 
-    const { name, last, street, city, phone, gpa } = info;
+    const dispatch = useDispatch();
+
+    const addStudent = student => dispatch( addStudentAction(student) );
+
+    const { name, last, street, city, phone, gpa } = student;
 
     const gpaOptions = [
         { id: 0, value: '', gpaVal: 'Select'},
@@ -33,13 +38,13 @@ const Form = () => {
     ];
 
     const handleChange = e => {
-        setInfo({
-            ...info,
+        setStudent({
+            ...student,
             [e.target.name] : e.target.value
         })
     };
 
-    const addStudent = e => {
+    const submitStudent = e => {
         e.preventDefault();
 
         if(
@@ -52,9 +57,8 @@ const Form = () => {
         ) {
             setError(true);
         } else {
-            info.id = uuidv4();
-            console.log(info);
-            setInfo({
+            addStudent(student);
+            setStudent({
                 name: '',
                 last: '',
                 street: '',
@@ -62,8 +66,8 @@ const Form = () => {
                 phone: '',
                 gpa: ''
             })
-    
             setError(false);
+            history.push('/table');
         }
 
     }
@@ -71,7 +75,7 @@ const Form = () => {
     return (
         <> 
             <form
-                onSubmit={addStudent}
+                onSubmit={submitStudent}
             >
                 <div>
                     <label htmlFor="name">First Name</label>
