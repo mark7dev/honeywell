@@ -1,23 +1,46 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { useDispatch } from 'react-redux';
+import { deleteStudentAction } from '../actions/studentsActions';
 
 const StudentRow = ({student}) => {
 
-    const deleteStudent = id => {
-        console.log(id);
+    const { name, last, street, city, phone, gpa, id } = student;
+
+    const dispatch = useDispatch();
+
+    const confirmDeleteStudent = id => {
+        
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+
+                // Action to delete
+                dispatch( deleteStudentAction(id) );
+                
+            }
+        })
         
     }
 
     return ( 
         <tr>
-            <td>{student.name}</td>
-            <td>{student.last}</td>
-            <td>{student.street}</td>
-            <td>{student.city}</td>
-            <td>{student.phone}</td>
-            <td>{student.gpa}</td>
-            <td><Link to={`/student/${student.id}`}>See details</Link></td>
-            <td><button onClick={() => deleteStudent(student.id)}>X</button></td>
+            <td>{name}</td>
+            <td>{last}</td>
+            <td>{street}</td>
+            <td>{city}</td>
+            <td>{phone}</td>
+            <td>{gpa}</td>
+            <td><Link to={`/student/${id}`}>See details</Link></td>
+            <td><button onClick={() => confirmDeleteStudent(id)}>X</button></td>
         </tr>
     );
 }

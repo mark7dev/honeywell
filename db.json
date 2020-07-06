@@ -1,58 +1,22 @@
 {
   "students": [
     {
-      "id": 1,
-      "name": "Peter",
-      "last": "McGill",
-      "street": "5th Avenue",
-      "city": "New York",
-      "phone": "123456",
-      "gpa": "A+"
-    },
-    {
-      "id": 2,
-      "name": "James",
-      "last": "Taylor",
-      "street": "Tree Avenue",
-      "city": "San Diego",
-      "phone": "789654",
-      "gpa": "C"
-    },
-    {
-      "id": 3,
-      "name": "Zach",
-      "last": "Thomas",
-      "street": "Red Field",
-      "city": "Los Angeles",
-      "phone": "258741",
-      "gpa": "B-"
-    },
-    {
-      "name": "Angelica",
-      "last": "Rose",
+      "name": "John",
+      "last": "Cena",
       "street": "Green Forest",
-      "city": "Ottawa",
-      "phone": "5577",
-      "gpa": "C",
-      "id": 4
-    },
-    {
-      "name": "Felix",
-      "last": "Gruber",
-      "street": "Yellow Forest",
-      "city": "San Marino",
-      "phone": "587964",
-      "gpa": "E/F",
-      "id": 5
+      "city": "LA",
+      "phone": "5186413",
+      "gpa": "B+",
+      "id": 1
     },
     {
       "name": "Henry",
       "last": "Martin",
-      "street": "Blue Forest",
-      "city": "Carson",
-      "phone": "756351",
-      "gpa": "A+",
-      "id": 6
+      "street": "Yellow Forest",
+      "city": "San Diego",
+      "phone": "586451321",
+      "gpa": "E/F",
+      "id": 2
     }
   ]
 }

@@ -30,12 +30,14 @@ const Table = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    { students.map(student => (
-                        <StudentRow 
-                            key={student.id}
-                            student={student}
-                        />
-                    ))}
+                    { students.length === 0 ? 'There are not students' : (
+                        students.map(student => (
+                            <StudentRow 
+                                key={student.id}
+                                student={student}
+                            />
+                        ))
+                    )}
                 </tbody>
             </table>
         </>
