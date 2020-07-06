@@ -1,14 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useDispatch } from 'react-redux';
-import { deleteStudentAction } from '../actions/studentsActions';
+import { deleteStudentAction, getStudentAction } from '../actions/studentsActions';
 
 const StudentRow = ({student}) => {
 
     const { name, last, street, city, phone, gpa, id } = student;
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const confirmDeleteStudent = id => {
         
@@ -31,6 +32,11 @@ const StudentRow = ({student}) => {
         
     }
 
+    const goDetails = student => {
+        dispatch( getStudentAction(student) );
+        history.push(`/student/${student.id}`)
+    }
+
     return ( 
         <tr>
             <td>{name}</td>
@@ -39,7 +45,7 @@ const StudentRow = ({student}) => {
             <td>{city}</td>
             <td>{phone}</td>
             <td>{gpa}</td>
-            <td><Link to={`/student/${id}`}>See details</Link></td>
+            <td><button onClick={() => goDetails(student)}>See details</button></td>
             <td><button onClick={() => confirmDeleteStudent(id)}>X</button></td>
         </tr>
     );

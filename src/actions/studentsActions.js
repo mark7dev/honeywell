@@ -3,7 +3,8 @@ import {
     GET_STUDENTS,
     DELETE_STUDENT,
     DELETE_STUDENT_SUCCESSFUL,
-    DELETE_STUDENT_ERROR
+    DELETE_STUDENT_ERROR,
+    SELECT_STUDENT
 } from '../types';
 import axiosClient from '../config/axios';
 import Swal from 'sweetalert2';
@@ -91,4 +92,16 @@ const deleteStudentSuccessful = () => ({
 const deleteStudentError = () => ({
     type: DELETE_STUDENT_ERROR,
     payload: true
+})
+
+
+export function getStudentAction(student) {
+    return (dispatch) => {
+        dispatch( selectStudent(student) );
+    }
+}
+
+const selectStudent = student => ({
+    type: SELECT_STUDENT,
+    payload: student
 })

@@ -3,13 +3,15 @@ import {
     GET_STUDENTS,
     DELETE_STUDENT,
     DELETE_STUDENT_SUCCESSFUL,
-    DELETE_STUDENT_ERROR
+    DELETE_STUDENT_ERROR,
+    SELECT_STUDENT
 } from '../types';
 
 const initialState = {
     students: [],
     error: null,
-    studentDeleted: null
+    studentDeleted: null,
+    studentSelected: null
 }
 
 export default function(state = initialState, action) {
@@ -39,6 +41,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 error: action.payload
+            }
+        case SELECT_STUDENT:
+            return {
+                ...state,
+                studentSelected: action.payload
             }
         default:
             return state;

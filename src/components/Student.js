@@ -1,28 +1,25 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import avatar from '../images/avatar.jpg';
 
 const Student = () => {
 
-    const student = {
-        id: 1,
-        name: 'Peter',
-        last: 'McGill',
-        street: '5th Avenue',
-        city: 'New York',
-        phone: '123456',
-        gpa: 'A+'
-    }
+    const student = useSelector( state => state.students.studentSelected);
+
+    if(!student) return null;
+
+    const { name, last, street, city, phone, gpa } = student;
 
     return ( 
         <>
             <div>
                 <img src={avatar} alt="Avatar"/>
                 <div>
-                    <h4><b>{student.name} {student.last}</b></h4> 
-                    <p>Street: {student.street}</p>
-                    <p>City: {student.city}</p> 
-                    <p>Phone: {student.phone}</p>
-                    <p>GPA: {student.gpa}</p>   
+                    <h4><b>{name} {last}</b></h4> 
+                    <p>Street: {street}</p>
+                    <p>City: {city}</p> 
+                    <p>Phone: {phone}</p>
+                    <p>GPA: {gpa}</p>   
                 </div>
             </div>
         </>

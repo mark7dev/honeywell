@@ -10,13 +10,22 @@
       "id": 1
     },
     {
+      "name": "Fer",
+      "last": "Nelly",
+      "street": "Av. 5",
+      "city": "San Diego",
+      "phone": "548965",
+      "gpa": "C+",
+      "id": 3
+    },
+    {
       "name": "Henry",
       "last": "Martin",
       "street": "Yellow Forest",
-      "city": "San Diego",
-      "phone": "586451321",
+      "city": "Guadalajara",
+      "phone": "587964",
       "gpa": "E/F",
-      "id": 2
+      "id": 4
     }
   ]
 }
