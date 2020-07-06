@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addStudentAction } from '../actions/studentsActions';
+import './styles/Form.scss';
 
 const Form = ({history}) => {
 
@@ -73,75 +74,80 @@ const Form = ({history}) => {
     }
 
     return (
-        <> 
-            <form
-                onSubmit={submitStudent}
-            >
-                <div>
-                    <label htmlFor="name">First Name</label>
-                    <input 
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={name}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="last">Last Name</label>
-                    <input 
-                        type="text"
-                        id="last"
-                        name="last"
-                        value={last}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="street">Street Number/Name</label>
-                    <input 
-                        type="text"
-                        id="street"
-                        name="street"
-                        value={street}
-                        onChange={handleChange}
-                    /> 
-                </div>
-                <div>
-                    <label htmlFor="city">City</label>
-                    <input 
-                        type="text"
-                        id="city"
-                        name="city"
-                        value={city}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="phone">Phone number</label>
-                    <input 
-                        type="text"
-                        id="phone"
-                        name="phone"
-                        value={phone}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>GPA</label>
-                    <select name="gpa" value={gpa} onChange={handleChange}>
-                        { gpaOptions.map(item => (
-                            <option
-                                key={item.id} 
-                                value={item.value}
-                            >{item.gpaVal}</option>
-                        ))}
-                    </select>
-                </div>
-                <input type="submit" value="Add student"/>
-            </form>
-            { error ? <p>All fields are required</p> : null }
-        </>
+        <div className="form__container">  
+            <h3>INFORMATION OF THE STUDENT</h3>
+            <div className="form">
+                <form
+                    onSubmit={submitStudent}
+                >
+                    <div className="info">
+                        <label htmlFor="name">First Name</label>
+                        <input className="form__input"
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={name}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="info">
+                        <label htmlFor="last">Last Name</label>
+                        <input className="form__input"
+                            type="text"
+                            id="last"
+                            name="last"
+                            value={last}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="info">
+                        <label htmlFor="street">Street Number/Name</label>
+                        <input className="form__input"
+                            type="text"
+                            id="street"
+                            name="street"
+                            value={street}
+                            onChange={handleChange}
+                        /> 
+                    </div>
+                    <div className="info">
+                        <label htmlFor="city">City</label>
+                        <input className="form__input"
+                            type="text"
+                            id="city"
+                            name="city"
+                            value={city}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="info">
+                        <label htmlFor="phone">Phone number</label>
+                        <input className="form__input"
+                            type="text"
+                            id="phone"
+                            name="phone"
+                            value={phone}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="info">
+                        <label>GPA</label>
+                        <select name="gpa" value={gpa} onChange={handleChange}>
+                            { gpaOptions.map(item => (
+                                <option
+                                    key={item.id} 
+                                    value={item.value}
+                                >{item.gpaVal}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="submit__container">
+                        <input className="btn__submit" type="submit" value="Add student"/>
+                    </div>
+                </form>
+                { error ? <p className="message">All fields are required</p> : null }
+            </div>
+        </div>
     );
 }
  

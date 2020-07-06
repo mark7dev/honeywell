@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useDispatch } from 'react-redux';
 import { deleteStudentAction, getStudentAction } from '../actions/studentsActions';
+import './styles/StudentRow.scss';
 
 const StudentRow = ({student}) => {
 
@@ -45,8 +46,8 @@ const StudentRow = ({student}) => {
             <td>{city}</td>
             <td>{phone}</td>
             <td>{gpa}</td>
-            <td><button onClick={() => goDetails(student)}>See details</button></td>
-            <td><button onClick={() => confirmDeleteStudent(id)}>X</button></td>
+            <td><button class="btn btn__details" onClick={() => goDetails(student)}>See details</button></td>
+            <td><button class="btn btn__delete" onClick={() => confirmDeleteStudent(id)}>X</button></td>
         </tr>
     );
 }

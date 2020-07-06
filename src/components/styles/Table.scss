@@ -1,0 +1,21 @@
+$secondaryColor: rgba(179,220,237,1);
+
+.table__container {
+    margin: 30px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid $secondaryColor;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: $secondaryColor;
+}

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getStudentsAction } from '../actions/studentsActions';
 import StudentRow from './StudentRow';
+import './styles/Table.scss';
 
 const Table = () => {
 
@@ -15,7 +16,7 @@ const Table = () => {
     const students = useSelector( state => state.students.students );
 
     return ( 
-        <>
+        <div className="table__container">
             <table>
                 <thead>
                     <tr>
@@ -40,7 +41,7 @@ const Table = () => {
                     )}
                 </tbody>
             </table>
-        </>
+        </div>
     );
 }
  
